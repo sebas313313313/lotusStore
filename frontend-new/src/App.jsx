@@ -1,3 +1,7 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AuthLayout from './layouts/AuthLayout';
 import DashboardLayout from './layouts/DashboardLayout';
@@ -5,6 +9,8 @@ import LoginPage from './pages/auth/LoginPage';
 import DashboardPage from './pages/admin/DashboardPage';
 
 function App() {
+  const [count, setCount] = useState(0)
+
   return (
     <Router>
       <Routes>
@@ -24,4 +30,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
