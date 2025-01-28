@@ -9,6 +9,9 @@ import connectDB from './config/db.js';
 import userRoutes from './routes/userRoutes.js';
 import productoRoutes from './routes/productoRoutes.js';
 import categoriaRoutes from './routes/categoriaRoutes.js';
+import pedidoRoutes from './routes/pedidoRoutes.js';
+import ventaRoutes from './routes/ventaRoutes.js';
+import configuracionRoutes from './routes/configuracionRoutes.js';
 
 // Configuración de __dirname en ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -36,6 +39,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/users', userRoutes);
 app.use('/api/productos', productoRoutes);
 app.use('/api/categorias', categoriaRoutes);
+app.use('/api/pedidos', pedidoRoutes);
+app.use('/api/ventas', ventaRoutes);
+app.use('/api/configuracion', configuracionRoutes);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

@@ -9,7 +9,11 @@ import NuevoPassword from './paginas/NuevoPassword'
 import ConfirmarCuenta from './paginas/ConfirmarCuenta'
 import Dashboard from './paginas/admin/Dashboard'
 import Productos from './paginas/admin/Productos'
-import FormularioProducto from './paginas/admin/FormularioProducto'
+import Pedidos from './paginas/admin/Pedidos'
+import Clientes from './paginas/admin/Clientes'
+import Categorias from './paginas/admin/Categorias'
+import Ventas from './paginas/admin/Ventas'
+import Configuracion from './paginas/admin/Configuracion'
 
 function App() {
   return (
@@ -25,8 +29,11 @@ function App() {
       <Route path="/dashboard" element={<RutaProtegida />}>
         <Route index element={<Dashboard />} />
         <Route path="productos" element={<Productos />} />
-        <Route path="productos/nuevo" element={<FormularioProducto />} />
-        <Route path="productos/editar/:id" element={<FormularioProducto />} />
+        <Route path="pedidos" element={<Pedidos />} />
+        <Route path="clientes" element={<Clientes />} />
+        <Route path="categorias" element={<Categorias />} />
+        <Route path="ventas" element={<Ventas />} />
+        <Route path="configuracion" element={<Configuracion />} />
       </Route>
     </Routes>
   )

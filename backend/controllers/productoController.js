@@ -5,7 +5,10 @@ import path from 'path';
 // Obtener todos los productos
 const obtenerProductos = async (req, res) => {
     try {
-        const productos = await Producto.find()
+        const { categoria } = req.query;
+        const query = categoria ? { categoria } : {};
+
+        const productos = await Producto.find(query)
             .populate('categoria', 'nombre')
             .populate('creador', 'name');
         res.json(productos);
