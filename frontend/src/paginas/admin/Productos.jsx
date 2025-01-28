@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import clientAxios from '../../config/clientAxios';
-import FormularioProducto from '../../components/FormularioProducto';
+import FormularioProducto from './FormularioProducto';
 import { HoverEffect } from '../../components/ui/HoverEffect';
 import useAuth from '../../hooks/useAuth';
+import Modal from '../../components/Modal'; 
 
 const Productos = () => {
   const [productos, setProductos] = useState([]);
@@ -108,65 +109,100 @@ const Productos = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-4xl font-black">
-          {categoriaSeleccionada ? `Productos - ${categoriaSeleccionada.nombre}` : 'Categorías'}
-        </h1>
-        {categoriaSeleccionada && (
-          <>
-            <button
-              onClick={() => setCategoriaSeleccionada(null)}
-              className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2"
-            >
-              Volver a Categorías
-            </button>
-            <button
-              onClick={handleNuevoProducto}
-              className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Nuevo Producto
-            </button>
-          </>
-        )}
+      <div className="flex flex-col gap-6">
+        <div className="bg-zinc-900/50 p-6 rounded-xl">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+              <h1 className="text-4xl font-black text-white mb-2">
+                {categoriaSeleccionada ? `Productos - ${categoriaSeleccionada.nombre}` : 'Categorías'}
+              </h1>
+              {categoriaSeleccionada && (
+                <p className="text-gray-400 text-sm">
+                  {productos.length} producto(s) encontrado(s)
+                </p>
+              )}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+              {categoriaSeleccionada && (
+                <>
+                  <button
+                    onClick={handleNuevoProducto}
+                    className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                  >
+                    <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                    <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                      Nuevo Producto
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => setCategoriaSeleccionada(null)}
+                    className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                  >
+                    <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                    <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                      Volver a Categorías
+                    </span>
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-zinc-900/50 p-6 rounded-xl">
+          {!categoriaSeleccionada ? (
+            categorias.length > 0 ? (
+              <HoverEffect
+                items={categoriasItems}
+                onClick={handleCategoriaClick}
+              />
+            ) : (
+              <div className="text-center py-10">
+                <p className="text-white text-xl mb-2">No hay categorías registradas</p>
+                <p className="text-gray-400">Primero debes crear algunas categorías</p>
+              </div>
+            )
+          ) : (
+            productos.length > 0 ? (
+              <HoverEffect
+                items={productosItems}
+                onClick={(producto) => handleEditarProducto(productos.find(p => p._id === producto.id))}
+              />
+            ) : (
+              <div className="text-center py-10">
+                <p className="text-white text-xl mb-4">No hay productos en esta categoría</p>
+                <button
+                  onClick={handleNuevoProducto}
+                  className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                >
+                  <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                  <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                    Agregar Primer Producto
+                  </span>
+                </button>
+              </div>
+            )
+          )}
+        </div>
       </div>
 
-      {!categoriaSeleccionada ? (
-        categorias.length > 0 ? (
-          <HoverEffect
-            items={categoriasItems}
-            onClick={handleCategoriaClick}
-          />
-        ) : (
-          <p className="text-center text-white my-5">No hay categorías registradas</p>
-        )
-      ) : (
-        productos.length > 0 ? (
-          <HoverEffect
-            items={productosItems}
-            onClick={(producto) => handleEditarProducto(productos.find(p => p._id === producto.id))}
-          />
-        ) : (
-          <div className="text-center">
-            <p className="text-white my-5">No hay productos en esta categoría</p>
-            <button
-              onClick={handleNuevoProducto}
-              className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Agregar Producto
-            </button>
-          </div>
-        )
-      )}
-
-      <FormularioProducto
-        isOpen={modalAbierto}
+      <Modal 
+        isOpen={modalAbierto} 
         onClose={() => {
-          setModalAbierto(false);
-          setProductoEditar(null);
+          setModalAbierto(false)
+          setProductoEditar(null)
         }}
-        producto={productoEditar}
-        categoriaInicial={categoriaSeleccionada}
-      />
+        title={productoEditar ? 'Editar Producto' : 'Nuevo Producto'}
+      >
+        <FormularioProducto
+          producto={productoEditar}
+          categoriaInicial={categoriaSeleccionada}
+          onSubmit={() => {
+            setModalAbierto(false)
+            setProductoEditar(null)
+          }}
+        />
+      </Modal>
     </div>
   );
 };

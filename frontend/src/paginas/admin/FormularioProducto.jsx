@@ -121,73 +121,92 @@ const FormularioProducto = () => {
 
   return (
     <form 
-      className="bg-white py-10 px-5 md:w-1/2 rounded-lg shadow"
+      className="w-full"
       onSubmit={handleSubmit}
     >
-      <div className="mb-5">
+      <div className="mb-6">
         <label
-          className="text-gray-700 uppercase font-bold text-sm"
+          className="block text-white text-sm font-medium mb-2"
           htmlFor="nombre"
         >
-          Nombre Producto
+          Nombre del Producto
         </label>
         <input
           id="nombre"
           type="text"
-          className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-          placeholder="Nombre del Producto"
+          className="w-full px-4 py-3 rounded-xl bg-black/50 text-white border border-white/10 focus:border-white/20 focus:ring-2 focus:ring-white/10 transition-all"
+          placeholder="Ej: Camiseta de Algodón"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
         />
       </div>
 
-      <div className="mb-5">
+      <div className="mb-6">
         <label
-          className="text-gray-700 uppercase font-bold text-sm"
+          className="block text-white text-sm font-medium mb-2"
           htmlFor="descripcion"
         >
-          Descripción Producto
+          Descripción del Producto
         </label>
         <textarea
           id="descripcion"
-          className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-          placeholder="Descripción del Producto"
+          className="w-full px-4 py-3 rounded-xl bg-black/50 text-white border border-white/10 focus:border-white/20 focus:ring-2 focus:ring-white/10 transition-all min-h-[100px]"
+          placeholder="Describe las características del producto..."
           value={descripcion}
           onChange={(e) => setDescripcion(e.target.value)}
         />
       </div>
 
-      <div className="mb-5">
-        <label
-          className="text-gray-700 uppercase font-bold text-sm"
-          htmlFor="precio"
-        >
-          Precio Producto
-        </label>
-        <input
-          id="precio"
-          type="number"
-          className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-          placeholder="Precio del Producto"
-          value={precio}
-          onChange={(e) => setPrecio(e.target.value)}
-        />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <label
+            className="block text-white text-sm font-medium mb-2"
+            htmlFor="precio"
+          >
+            Precio del Producto
+          </label>
+          <input
+            id="precio"
+            type="number"
+            className="w-full px-4 py-3 rounded-xl bg-black/50 text-white border border-white/10 focus:border-white/20 focus:ring-2 focus:ring-white/10 transition-all"
+            placeholder="Ej: 29.99"
+            value={precio}
+            onChange={(e) => setPrecio(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <label
+            className="block text-white text-sm font-medium mb-2"
+            htmlFor="stock"
+          >
+            Stock Disponible
+          </label>
+          <input
+            id="stock"
+            type="number"
+            className="w-full px-4 py-3 rounded-xl bg-black/50 text-white border border-white/10 focus:border-white/20 focus:ring-2 focus:ring-white/10 transition-all"
+            placeholder="Ej: 100"
+            value={stock}
+            onChange={(e) => setStock(e.target.value)}
+          />
+        </div>
       </div>
 
-      <div className="mb-5">
+      <div className="my-6">
         <label
-          className="text-gray-700 uppercase font-bold text-sm"
+          className="block text-white text-sm font-medium mb-2"
           htmlFor="categoria"
         >
-          Categoría Producto
+          Categoría
         </label>
         <select
           id="categoria"
-          className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+          className="w-full px-4 py-3 rounded-xl bg-black/50 text-white border border-white/10 focus:border-white/20 focus:ring-2 focus:ring-white/10 transition-all"
           value={categoria}
           onChange={(e) => setCategoria(e.target.value)}
         >
-          <option value="">-- Seleccionar --</option>
+          <option value="">Selecciona una categoría</option>
           {categorias.map(categoria => (
             <option key={categoria._id} value={categoria._id}>
               {categoria.nombre}
@@ -196,43 +215,34 @@ const FormularioProducto = () => {
         </select>
       </div>
 
-      <div className="mb-5">
+      <div className="mb-6">
         <label
-          className="text-gray-700 uppercase font-bold text-sm"
-          htmlFor="stock"
-        >
-          Stock Producto
-        </label>
-        <input
-          id="stock"
-          type="number"
-          className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-          placeholder="Stock del Producto"
-          value={stock}
-          onChange={(e) => setStock(e.target.value)}
-        />
-      </div>
-
-      <div className="mb-5">
-        <label
-          className="text-gray-700 uppercase font-bold text-sm"
+          className="block text-white text-sm font-medium mb-2"
           htmlFor="imagen"
         >
-          Imagen Producto
+          Imagen del Producto
         </label>
-        <input
-          id="imagen"
-          type="file"
-          className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-          onChange={handleImagenChange}
-        />
+        <div className="relative">
+          <input
+            id="imagen"
+            type="file"
+            className="w-full px-4 py-3 rounded-xl bg-black/50 text-white border border-white/10 focus:border-white/20 focus:ring-2 focus:ring-white/10 transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-white/10 file:text-white hover:file:bg-white/20"
+            onChange={handleImagenChange}
+          />
+        </div>
       </div>
 
-      <input
-        type="submit"
-        value={params.id ? "Actualizar Producto" : "Crear Producto"}
-        className="bg-sky-600 w-full p-3 uppercase font-bold text-white rounded cursor-pointer hover:bg-sky-700 transition-colors"
-      />
+      <div className="flex justify-end gap-3">
+        <button
+          type="submit"
+          className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+        >
+          <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+          <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+            {params.id ? "Actualizar Producto" : "Crear Producto"}
+          </span>
+        </button>
+      </div>
     </form>
   );
 };
