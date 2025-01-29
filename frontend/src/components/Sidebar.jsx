@@ -33,7 +33,7 @@ const Sidebar = () => {
 
             {/* Menú */}
             <div className="flex flex-col gap-2">
-                <Link to="/dashboard"
+                <Link to="/admin"
                     className="text-white bg-black flex items-center gap-2 hover:bg-white hover:text-black rounded-full px-6 py-4 text-xl font-medium transition duration-250"
                 >
                     <svg className="h-7 w-7" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none">
@@ -45,7 +45,7 @@ const Sidebar = () => {
                     Dashboard
                 </Link>
 
-                <Link to="/dashboard/productos"
+                <Link to="/admin/productos"
                     className="text-white bg-black flex items-center gap-2 hover:bg-white hover:text-black rounded-full px-6 py-4 text-xl font-medium transition duration-250"
                 >
                     <svg className="h-7 w-7" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none">
@@ -54,16 +54,16 @@ const Sidebar = () => {
                     Productos
                 </Link>
 
-                <Link to="/dashboard/pedidos"
+                <Link to="/admin/pedidos"
                     className="text-white bg-black flex items-center gap-2 hover:bg-white hover:text-black rounded-full px-6 py-4 text-xl font-medium transition duration-250"
                 >
                     <svg className="h-7 w-7" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none">
-                        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                     </svg>
                     Pedidos
                 </Link>
 
-                <Link to="/dashboard/clientes"
+                <Link to="/admin/clientes"
                     className="text-white bg-black flex items-center gap-2 hover:bg-white hover:text-black rounded-full px-6 py-4 text-xl font-medium transition duration-250"
                 >
                     <svg className="h-7 w-7" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none">
@@ -72,7 +72,7 @@ const Sidebar = () => {
                     Clientes
                 </Link>
 
-                <Link to="/dashboard/categorias"
+                <Link to="/admin/categorias"
                     className="text-white bg-black flex items-center gap-2 hover:bg-white hover:text-black rounded-full px-6 py-4 text-xl font-medium transition duration-250"
                 >
                     <svg className="h-7 w-7" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none">
@@ -81,7 +81,7 @@ const Sidebar = () => {
                     Categorías
                 </Link>
 
-                <Link to="/dashboard/ventas"
+                <Link to="/admin/ventas"
                     className="text-white bg-black flex items-center gap-2 hover:bg-white hover:text-black rounded-full px-6 py-4 text-xl font-medium transition duration-250"
                 >
                     <svg className="h-7 w-7" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none">
@@ -90,7 +90,7 @@ const Sidebar = () => {
                     Ventas
                 </Link>
 
-                <Link to="/dashboard/configuracion"
+                <Link to="/admin/configuracion"
                     className="text-white bg-black flex items-center gap-2 hover:bg-white hover:text-black rounded-full px-6 py-4 text-xl font-medium transition duration-250"
                 >
                     <svg className="h-7 w-7" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none">

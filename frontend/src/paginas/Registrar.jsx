@@ -45,7 +45,7 @@ const Registrar = () => {
       setRepetirPassword('')
 
       setTimeout(() => {
-        navigate('/')
+        navigate('/auth/login')
       }, 3000)
     } catch (error) {
       setAlerta(error.response?.data?.msg || 'Error al crear la cuenta')

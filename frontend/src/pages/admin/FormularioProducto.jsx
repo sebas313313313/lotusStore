@@ -84,7 +84,7 @@ const FormularioProducto = () => {
                 await clienteAxios.post('/productos', formData, config);
             }
 
-            navigate('/dashboard/productos');
+            navigate('/admin/productos');
         } catch (error) {
             console.log(error);
         }
@@ -213,7 +213,7 @@ const FormularioProducto = () => {
                     <button
                         type="button"
                         className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors mr-2"
-                        onClick={() => navigate('/dashboard/productos')}
+                        onClick={() => navigate('/admin/productos')}
                     >
                         Cancelar
                     </button>

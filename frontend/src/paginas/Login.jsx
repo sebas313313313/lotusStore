@@ -24,7 +24,7 @@ const Login = () => {
       const { data } = await clientAxios.post('/users/login', { email, password })
       localStorage.setItem('token', data.token)
       setAuth(data)
-      navigate('/dashboard')
+      navigate('/admin')
     } catch (error) {
       setAlerta(error.response?.data?.msg || 'Error al iniciar sesión')
     }
@@ -114,7 +114,7 @@ const Login = () => {
                   />
                   <span className="text-xs text-white">Recordarme</span>
                 </label>
-                <Link className="text-sm font-medium text-white underline" to="/olvide-password">
+                <Link className="text-sm font-medium text-white underline" to="/auth/olvide-password">
                   ¿Olvidaste tu contraseña?
                 </Link>
               </div>
@@ -122,7 +122,7 @@ const Login = () => {
               <div className="mt-4 flex items-center justify-end gap-x-2">
                 <Link
                   className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-white/10 hover:ring hover:ring-white h-10 px-4 py-2 duration-200 text-white"
-                  to="/registrar"
+                  to="/auth/registrar"
                 >
                   Registrarse
                 </Link>

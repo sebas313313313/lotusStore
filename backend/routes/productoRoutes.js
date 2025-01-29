@@ -14,8 +14,8 @@ const router = express.Router();
 
 // Rutas Públicas
 router.get('/', obtenerProductos);
+router.get('/categoria/:categoriaId', obtenerProductosPorCategoria); 
 router.get('/:id', obtenerProducto);
-router.get('/categoria/:categoriaId', obtenerProductosPorCategoria);
 
 // Rutas Privadas (requieren autenticación)
 router.post('/', checkAuth, upload.single('imagen'), nuevoProducto);
